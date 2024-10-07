@@ -8,4 +8,21 @@ const hanldeLogin = (email, password) => {
 const getAllUser = (id) => {
   return axios.get(`api/get-all-user?id=${id}`);
 };
-export { hanldeLogin, getAllUser };
+
+const createNewUser = (data) => {
+  return axios.post(`api/create-new-user`, data);
+};
+
+const deleteUser = (userId) => {
+  return axios.delete("api/delete-user", {
+    data: {
+      id: userId,
+    },
+  });
+};
+
+const editUser = (userId) => {
+  return axios.put("api/edit-user", userId);
+};
+
+export { hanldeLogin, getAllUser, createNewUser, deleteUser, editUser };
