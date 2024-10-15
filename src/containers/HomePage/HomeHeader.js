@@ -6,6 +6,7 @@ import logo from "../../assets/images.png";
 import { FormattedMessage } from "react-intl";
 import { LANGUAGES } from "../../utils/constant";
 import { ChangeLanguages } from "../../store/actions";
+
 class HomeHeader extends Component {
   handleOnClickLanguage = (language) => {
     this.props.ChangeLanguageAppRedux(language);
