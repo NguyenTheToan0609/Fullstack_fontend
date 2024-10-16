@@ -42,6 +42,7 @@ class Login extends Component {
       }
       if (data && data.errCode == 0) {
         this.props.userLoginSuccess(data.user);
+        console.log(data);
       }
     } catch (error) {
       if (error.response) {
@@ -88,7 +89,7 @@ class Login extends Component {
                 />
                 <span onClick={() => this.handleShowHidePassword()}>
                   <i
-                    class={
+                    className={
                       this.state.isShowHide ? "far fa-eye" : "far fa-eye-slash"
                     }
                   ></i>
@@ -114,8 +115,8 @@ class Login extends Component {
               <span className="different-login">Or sign int with:</span>
             </div>
             <div className="col-12 social-login">
-              <i class="fab fa-google-plus-g google"></i>
-              <i class="fab fa-facebook-f facebook"></i>
+              <i className="fab fa-google-plus-g google"></i>
+              <i className="fab fa-facebook-f facebook"></i>
             </div>
           </div>
         </div>

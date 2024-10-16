@@ -10,14 +10,14 @@ class HomeFooter extends Component {
           <div className="copy-right"> &#169;2024 NguyenTheToan</div>
           <div className="logo-footer">
             <a target="_blank" href="https://www.youtube.com/@ToanNguyen-bj3ie">
-              <i class="fab fa-youtube icon-youtube"></i>
+              <i className="fab fa-youtube icon-youtube"></i>
             </a>
             <a target="_blank" href="https://www.facebook.com/toan.the.16121">
-              <i class="fab fa-facebook-square icon-facebook"></i>
+              <i className="fab fa-facebook-square icon-facebook"></i>
             </a>
 
             <a target="_blank" href="https://www.instagram.com/toanthe6/">
-              <i class="fab fa-instagram icon-instagram"></i>
+              <i className="fab fa-instagram icon-instagram"></i>
             </a>
           </div>
         </div>
