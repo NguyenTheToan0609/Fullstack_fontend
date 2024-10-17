@@ -36,6 +36,7 @@
         "header": "Tham số hệ thống"
       }
     },
+
     "admin": {
       "manage-user": "Người Dùng",
       "manage-doctor": "Quản lý bác sĩ",
@@ -49,5 +50,19 @@
       "handbook": "Cẩm Nang",
       "manage-handbook": "Quản Lý Cẩm Nang"
     }
+  },
+  "manage-user": {
+    "add": "Thêm mới người dùng",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "firtsname": "Tên",
+    "lastname": "Họ",
+    "phone-number": "Số điện thoại",
+    "address": "Địa chỉ",
+    "gender": "Giới tính",
+    "position": "Chức danh",
+    "role": "Vai trò",
+    "image": "Ảnh đại diện",
+    "save": "Lưu"
   }
 }
