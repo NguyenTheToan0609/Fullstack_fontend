@@ -1,0 +1,24 @@
+.preview-img-container {
+  .upload {
+    padding: 5px;
+    background: #ddd;
+    cursor: pointer;
+
+    i {
+      margin-right: 5px;
+    }
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .preview-image {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    background: center center no-repeat;
+    background-size: contain;
+    cursor: pointer;
+  }
+}
