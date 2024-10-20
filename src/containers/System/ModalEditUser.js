@@ -52,6 +52,7 @@ class ModalEditUser extends Component {
         alert("Missing parameter : " + arrInput[i]);
         break;
       }
+      return true;
     }
   };
 

@@ -6,6 +6,7 @@ import * as actions from "../../../store/actions";
 import "./UserRedux.scss";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
+import TableManageUser from "./TableManageUser";
 
 class UserRedux extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class UserRedux extends Component {
 
       email: "",
       password: "",
-      firtsName: "",
+      firstName: "",
       lastName: "",
       phoneNumber: "",
       address: "",
@@ -91,35 +92,26 @@ class UserRedux extends Component {
       ...copyState,
     });
   };
-
   checkValideInput = () => {
-    let isValid = true;
-    let arrInput = [
-      "email",
-      "password",
-      "firtsName",
-      "lastName",
-      "phoneNumber",
-      "address",
-    ];
+    let isValidate = true;
+    let arrInput = ["email", "password", "firstName", "lastName", "address"];
     for (let i = 0; i < arrInput.length; i++) {
       if (!this.state[arrInput[i]]) {
-        isValid = false;
+        isValidate = false;
         alert("Missing parameter : " + arrInput[i]);
         break;
       }
-      return true;
     }
+    return isValidate;
   };
 
   handleSaveUser = () => {
     let isValid = this.checkValideInput();
-    if (isValid === false) return;
-    else {
+    if (isValid === true) {
       this.props.createNewUserRedux({
         email: this.state.email,
         password: this.state.password,
-        firstName: this.state.firtsName,
+        firstName: this.state.firstName,
         lastName: this.state.lastName,
         address: this.state.address,
         gender: this.state.gender,
@@ -140,7 +132,7 @@ class UserRedux extends Component {
     let {
       email,
       password,
-      firtsName,
+      firstName,
       lastName,
       phoneNumber,
       address,
@@ -191,9 +183,9 @@ class UserRedux extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  value={firtsName}
+                  value={firstName}
                   onChange={(event) =>
-                    this.handleOnchangeInput(event, "firtsName")
+                    this.handleOnchangeInput(event, "firstName")
                   }
                 />
               </div>
@@ -329,13 +321,16 @@ class UserRedux extends Component {
                 </div>
               </div>
 
-              <div className="col-12 ">
+              <div className="col-12 my-3">
                 <button
                   className="btn btn-primary px-3 mt-4"
                   onClick={() => this.handleSaveUser()}
                 >
                   <FormattedMessage id="manage-user.save" />
                 </button>
+              </div>
+              <div className="col-12 pb-5">
+                <TableManageUser />
               </div>
             </div>
           </div>
