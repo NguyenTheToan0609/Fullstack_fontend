@@ -84,7 +84,6 @@ class UserManage extends Component {
       isShowModalEdit: !this.state.isShowModalEdit,
       userEdit: user,
     });
-    console.log("user", user);
   };
 
   toggleModalEditUser = () => {

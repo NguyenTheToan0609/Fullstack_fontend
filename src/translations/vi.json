@@ -52,6 +52,7 @@
     }
   },
   "manage-user": {
+    "title": "Quản Lý Người Dùng Với Redux",
     "add": "Thêm mới người dùng",
     "email": "Email",
     "password": "Mật khẩu",
@@ -63,6 +64,7 @@
     "position": "Chức danh",
     "role": "Vai trò",
     "image": "Ảnh đại diện",
-    "save": "Lưu"
+    "save": "Tạo người dùng",
+    "edit": "Lưu thay đổi"
   }
 }

@@ -4,6 +4,7 @@ import {
   createNewUser,
   getAllUser,
   deleteUser,
+  editUser,
 } from "../../services/userService";
 import { toast } from "react-toastify";
 
@@ -175,4 +176,35 @@ export const deleteUsersSuccess = () => ({
 
 export const deleteUsersFailed = () => ({
   type: actionTypes.DELETE_USER_FAILED,
+});
+
+//Edit người dùng
+export const editUsersStart = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await editUser(data);
+      console.log("check res ", res);
+      if (res && res.errCode === 0) {
+        toast.success("Update user succeed !");
+        dispatch(editUsersSuccess());
+        dispatch(fetchAllUsersStart());
+      } else {
+        toast.error("Update user error !");
+        dispatch(editUsersFailed());
+      }
+    } catch (e) {
+      toast.error("Update user error !");
+
+      dispatch(editUsersFailed());
+      console.log(e);
+    }
+  };
+};
+
+export const editUsersSuccess = () => ({
+  type: actionTypes.EDIT_USER_SUCCESS,
+});
+
+export const editUsersFailed = () => ({
+  type: actionTypes.EDIT_USER_FAILED,
 });

@@ -51,6 +51,7 @@
     }
   },
   "manage-user": {
+    "title": "Manage User Redux",
     "add": "Add new a user",
     "email": "Email",
     "password": "Password",
@@ -62,6 +63,7 @@
     "position": "Position",
     "role": "Role",
     "image": "Avatar",
-    "save": "Save"
+    "save": "Save User",
+    "edit": "Update User"
   }
 }
