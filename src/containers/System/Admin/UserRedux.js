@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
-import { LANGUAGES, CRUD_ACTIONS } from "../../../utils";
+import { LANGUAGES, CRUD_ACTIONS, CommonUtils } from "../../../utils";
 import * as actions from "../../../store/actions";
 import "./UserRedux.scss";
 import Lightbox from "react-image-lightbox";
@@ -87,18 +87,21 @@ class UserRedux extends Component {
           arrPosition && arrPosition.length > 0 ? arrPosition[0].key : "",
         role: arrRole && arrRole.length > 0 ? arrRole[0].key : "",
         action: CRUD_ACTIONS.CREATE,
+        preViewImgUrl: "",
       });
     }
   }
 
-  handleOnChangeImage = (event) => {
+  handleOnChangeImage = async (event) => {
     let data = event.target.files;
     let files = data[0];
     if (files) {
+      let base64 = await CommonUtils.getBase64(files);
+      console.log("base64 image", base64);
       const objectUrl = URL.createObjectURL(files);
       this.setState({
         preViewImgUrl: objectUrl,
-        avatar: files,
+        avatar: base64,
       });
     }
   };
@@ -146,6 +149,7 @@ class UserRedux extends Component {
           roleId: this.state.role,
           phonenumber: this.state.phoneNumber,
           positionId: this.state.position,
+          avatar: this.state.avatar,
         });
       }
     }
@@ -161,12 +165,16 @@ class UserRedux extends Component {
         roleId: this.state.role,
         phonenumber: this.state.phoneNumber,
         positionId: this.state.position,
-        // avatar: this.statetate.avatar,
+        avatar: this.state.avatar,
       });
     }
   };
 
   handleEditUserFromParent = (user) => {
+    let imageBase64 = "";
+    if (user.image) {
+      imageBase64 = new Buffer(user.image, "base64").toString("binary");
+    }
     this.setState({
       email: user.email,
       password: "HARDCODE",
@@ -178,6 +186,7 @@ class UserRedux extends Component {
       phoneNumber: user.phonenumber,
       positionId: user.position,
       avatar: "",
+      preViewImgUrl: imageBase64,
       action: CRUD_ACTIONS.EDIT,
       userEditId: user.id,
     });
