@@ -5,6 +5,7 @@ import {
   getAllUser,
   deleteUser,
   editUser,
+  getTopDoctorHomeService,
 } from "../../services/userService";
 import { toast } from "react-toastify";
 
@@ -125,7 +126,7 @@ export const fetchAllUsersStart = () => {
   return async (dispatch, getState) => {
     try {
       let res = await getAllUser("ALL");
-      console.log("check res ", res);
+
       if (res && res.errCode === 0) {
         dispatch(fetchAllUsersSuccess(res.users.reverse()));
       } else {
@@ -207,4 +208,30 @@ export const editUsersSuccess = () => ({
 
 export const editUsersFailed = () => ({
   type: actionTypes.EDIT_USER_FAILED,
+});
+
+//Lấy tất cả các role là bác sĩ
+export const fetchTopDoctor = (data) => {
+  return async (dispatch, getState) => {
+    try {
+      let res = await getTopDoctorHomeService("");
+      if (res && res.errCode === 0) {
+        dispatch(fetchAllTopDoctorSuccses(res.data));
+      } else {
+        dispatch(fetchAllTopDoctorFailed());
+      }
+    } catch (e) {
+      dispatch(fetchAllTopDoctorFailed());
+      console.log(e);
+    }
+  };
+};
+
+export const fetchAllTopDoctorSuccses = (data) => ({
+  type: actionTypes.FETCH_TOP_DOCTORS_SUCCESS,
+  dataDoctors: data,
+});
+
+export const fetchAllTopDoctorFailed = () => ({
+  type: actionTypes.FETCH_TOP_DOCTORS_FAILED,
 });
